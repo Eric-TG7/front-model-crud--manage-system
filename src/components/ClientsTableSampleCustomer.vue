@@ -17,27 +17,59 @@
     >
       <b-table-column
         v-slot="props"
-        label="Category Name"
+        label="Full Name"
         field="categoryName"
         sortable
       >
-        {{ props.row.categoryName }}
+        {{ props.row.contactName }}
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Description"
+        label="Company"
         field="company"
         sortable
       >
-        {{ props.row.description }}
+        {{ props.row.companyName }}
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Picture"
+        label="Contact Title"
         field="city"
         sortable
       >
-        {{ props.row.picture }}
+        {{ props.row.contactTitle }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Address"
+        sortable
+      >
+        {{ props.row.address }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="City"
+      >
+        <small
+          class="has-text-grey is-abbr-like"
+          :title="city"
+        >{{ props.row.city }}</small>
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Country"
+        field="company"
+        sortable
+      >
+        {{ props.row.country }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Phone Number"
+        field="company"
+        sortable
+      >
+        {{ props.row.phone }}
       </b-table-column>
       <b-table-column
         v-slot="props"
@@ -121,7 +153,7 @@ export default defineComponent({
   },
   async mounted () {
     try {
-      const response = await axios.get('http://localhost:8080/api/category2')
+      const response = await axios.get('http://localhost:8080/api/customer2')
       this.ally = response.data
       console.log(this.ally)
     } catch (error) {

@@ -8,6 +8,7 @@
     />
     <b-table
       :checked-rows.sync="checkedRows"
+      :checkable="checkable"
       :paginated="paginated"
       :per-page="perPage"
       :data="ally"
@@ -17,7 +18,18 @@
     >
       <b-table-column
         v-slot="props"
-        label="Category Name"
+        cell-class="has-no-head-mobile is-image-cell"
+      >
+        <div class="image">
+          <img
+            :src="props.row.avatar"
+            class="is-rounded"
+          >
+        </div>
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Name"
         field="categoryName"
         sortable
       >
@@ -25,7 +37,7 @@
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Description"
+        label="Company"
         field="company"
         sortable
       >
@@ -33,11 +45,35 @@
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Picture"
+        label="City"
         field="city"
         sortable
       >
         {{ props.row.picture }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        cell-class="is-progress-col"
+        label="Progress"
+        field="progress"
+        sortable
+      >
+        <progress
+          class="progress is-small is-info"
+          :value="props.row.progress"
+          max="100"
+        >
+          {{ props.row.progress }}
+        </progress>
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Created"
+      >
+        <small
+          class="has-text-grey is-abbr-like"
+          :title="props.row.created"
+        >{{ props.row.created }}</small>
       </b-table-column>
       <b-table-column
         v-slot="props"
@@ -121,8 +157,10 @@ export default defineComponent({
   },
   async mounted () {
     try {
-      const response = await axios.get('http://localhost:8080/api/category2')
+      const response = await axios.get('http://localhost:8080/api/product2')
       this.ally = response.data
+      this.description = response.data.description
+      this.names = response.data.categoryName
       console.log(this.ally)
     } catch (error) {
       console.error('Error fetching variable:', error)

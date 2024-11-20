@@ -7,7 +7,6 @@
       @cancel="trashCancel"
     />
     <b-table
-      :checked-rows.sync="checkedRows"
       :paginated="paginated"
       :per-page="perPage"
       :data="ally"
@@ -17,27 +16,19 @@
     >
       <b-table-column
         v-slot="props"
-        label="Category Name"
+        label="Company Name"
         field="categoryName"
         sortable
       >
-        {{ props.row.categoryName }}
+        {{ props.row.companyName }}
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Description"
+        label="Company"
         field="company"
         sortable
       >
-        {{ props.row.description }}
-      </b-table-column>
-      <b-table-column
-        v-slot="props"
-        label="Picture"
-        field="city"
-        sortable
-      >
-        {{ props.row.picture }}
+        {{ props.row.phone }}
       </b-table-column>
       <b-table-column
         v-slot="props"
@@ -121,8 +112,10 @@ export default defineComponent({
   },
   async mounted () {
     try {
-      const response = await axios.get('http://localhost:8080/api/category2')
+      const response = await axios.get('http://localhost:8080/api/shipper2')
       this.ally = response.data
+      this.description = response.data.description
+      this.names = response.data.categoryName
       console.log(this.ally)
     } catch (error) {
       console.error('Error fetching variable:', error)

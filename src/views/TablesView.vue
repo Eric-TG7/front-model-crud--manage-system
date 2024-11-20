@@ -24,7 +24,7 @@
 
       <card-component
         class="has-table has-mobile-sort-spaced"
-        title="Clients"
+        title="Category"
         icon="account-multiple"
       >
         <clients-table-sample
@@ -44,8 +44,11 @@
         </div>
       </notification-bar>
 
-      <card-component class="has-table has-mobile-sort-spaced">
-        <clients-table-sample
+      <card-component 
+  class="has-table has-mobile-sort-spaced"
+  title="Customer"
+      >
+        <clients-table-sample-customer
           checkable
         />
       </card-component>
@@ -62,8 +65,26 @@
         </div>
       </notification-bar>
 
-      <card-component class="has-table has-thead-hidden">
-        <clients-table-sample is-empty />
+      <card-component
+        title="Employee">
+        <clients-table-sample-employee />
+      </card-component>
+      <card-component
+        title="Shipper">
+        <clients-table-sample-shipper />
+      </card-component>
+      <card-component
+        title="Supplier">
+        <clients-table-sample-supplier />
+      </card-component>
+       <card-component
+        class="has-table has-mobile-sort-spaced"
+        title="Category"
+        icon="account-multiple"
+      >
+        <clients-table-sample
+          checkable
+        />
       </card-component>
     </section>
   </div>
@@ -76,6 +97,10 @@ import ClientsTableSample from '@/components/ClientsTableSample.vue'
 import CardComponent from '@/components/CardComponent.vue'
 import TitleBar from '@/components/TitleBar.vue'
 import HeroBar from '@/components/HeroBar.vue'
+import ClientsTableSampleCustomer from '@/components/ClientsTableSampleCustomer.vue'
+import ClientsTableSampleEmployee from '@/components/ClientsTableSampleEmployee.vue'
+import ClientsTableSampleShipper from '@/components/ClientsTableSampleShipper.vue'
+import ClientsTableSampleSupplier from '@/components/ClientsTableSampleSupplier.vue'
 
 export default defineComponent({
   name: 'TablesView',
@@ -84,7 +109,11 @@ export default defineComponent({
     TitleBar,
     CardComponent,
     ClientsTableSample,
-    NotificationBar
+    ClientsTableSampleEmployee,
+    NotificationBar,
+    ClientsTableSampleCustomer,
+    ClientsTableSampleShipper,
+    ClientsTableSampleSupplier
   },
   data () {
     return {

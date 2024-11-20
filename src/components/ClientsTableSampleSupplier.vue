@@ -17,27 +17,91 @@
     >
       <b-table-column
         v-slot="props"
-        label="Category Name"
+        label="Full Name"
         field="categoryName"
         sortable
       >
-        {{ props.row.categoryName }}
+        {{ props.row.contactName }}
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Description"
+        label="Company"
         field="company"
         sortable
       >
-        {{ props.row.description }}
+        {{ props.row.companyName }}
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Picture"
+        label="Contact Title"
         field="city"
         sortable
       >
-        {{ props.row.picture }}
+        {{ props.row.contactTitle }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Address"
+        field="city"
+        sortable
+      >
+        {{ props.row.address }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="City"
+        field="city"
+        sortable
+      >
+        {{ props.row.city }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Region"
+        field="city"
+        sortable
+      >
+        {{ props.row.region }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Postal Code"
+        field="city"
+        sortable
+      >
+        {{ props.row.postalCode }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Country"
+        field="city"
+        sortable
+      >
+        {{ props.row.country }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Phone number"
+        field="city"
+        sortable
+      >
+        {{ props.row.phone }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Fax"
+        field="city"
+        sortable
+      >
+        {{ props.row.fax }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Home Page"
+        field="city"
+        sortable
+      >
+        {{ props.row.homePage }}
       </b-table-column>
       <b-table-column
         v-slot="props"
@@ -121,8 +185,10 @@ export default defineComponent({
   },
   async mounted () {
     try {
-      const response = await axios.get('http://localhost:8080/api/category2')
+      const response = await axios.get('http://localhost:8080/api/supplier2')
       this.ally = response.data
+      this.description = response.data.description
+      this.names = response.data.categoryName
       console.log(this.ally)
     } catch (error) {
       console.error('Error fetching variable:', error)

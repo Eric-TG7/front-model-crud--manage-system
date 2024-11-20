@@ -17,27 +17,124 @@
     >
       <b-table-column
         v-slot="props"
-        label="Category Name"
+        label="Full Name"
         field="categoryName"
         sortable
       >
-        {{ props.row.categoryName }}
+        {{ props.row.firstName }}
+        {{ props.row.lastName }}
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Description"
+        label="Title"
         field="company"
         sortable
       >
-        {{ props.row.description }}
+        {{ props.row.title }}
       </b-table-column>
       <b-table-column
         v-slot="props"
-        label="Picture"
+        label="City"
         field="city"
         sortable
       >
-        {{ props.row.picture }}
+        {{ props.row.city }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="title Courtesy"
+        field="city"
+        sortable
+      >
+        {{ props.row.titleOfCourtesy }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Birth Date"
+        field="city"
+        sortable
+      >
+        {{ props.row.birthDate }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Hire Date"
+        field="city"
+        sortable
+      >
+        {{ props.row.hireDate }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Adress"
+        field="city"
+        sortable
+      >
+        {{ props.row.address }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Region"
+        field="city"
+        sortable
+      >
+        {{ props.row.region }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Postal Code"
+        field="city"
+        sortable
+      >
+        {{ props.row.postalCode }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Country"
+        field="city"
+        sortable
+      >
+        {{ props.row.country }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Home Phone"
+        field="city"
+        sortable
+      >
+        {{ props.row.homePhone }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Extension"
+        field="city"
+        sortable
+      >
+        {{ props.row.extension }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Photo"
+        field="city"
+        sortable
+      >
+        {{ props.row.photo }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Notes"
+        field="city"
+        sortable
+      >
+        {{ props.row.notes }}
+      </b-table-column>
+      <b-table-column
+        v-slot="props"
+        label="Reports"
+        field="city"
+        sortable
+      >
+        {{ props.row.reportsTo }}
       </b-table-column>
       <b-table-column
         v-slot="props"
@@ -89,6 +186,7 @@ import { defineComponent } from 'vue'
 import { mapState } from 'vuex'
 import ModalBox from '@/components/ModalBox.vue'
 import axios from 'axios'
+import TitleBar from '@/components/TitleBar.vue';
 export default defineComponent({
   name: 'ClientsTableSample',
   components: { ModalBox },
@@ -121,7 +219,7 @@ export default defineComponent({
   },
   async mounted () {
     try {
-      const response = await axios.get('http://localhost:8080/api/category2')
+      const response = await axios.get('http://localhost:8080/api/employee2')
       this.ally = response.data
       console.log(this.ally)
     } catch (error) {
